@@ -31,7 +31,13 @@ class Index extends Component {
     return (
       <>
         <ProductivityForm addProduced={this.handleProduced} />
-        <Table produced={this.state.produced} delete={this.deleteProducedRow} />
+        <br />
+        {this.state.produced.length > 0 && (
+          <Table
+            produced={this.state.produced}
+            delete={this.deleteProducedRow}
+          />
+        )}
       </>
     )
   }
