@@ -1,7 +1,19 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import Layout from './src/components/layout'
 
-// You can delete this file if you're not using it
+export const wrapPageElement = ({ element, props }) => {
+  return (
+    <>
+      <Helmet>
+        <link
+          rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+          crossorigin="anonymous"
+        />
+      </Helmet>
+      <Layout {...props}>{element}</Layout>
+    </>
+  )
+}

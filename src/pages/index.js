@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
 import ProductivityForm from '../components/productivityForm'
 import Table from '../components/table'
 
@@ -31,11 +29,10 @@ class Index extends Component {
 
   render() {
     return (
-      <Layout>
-        <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <>
         <ProductivityForm addProduced={this.handleProduced} />
         <Table produced={this.state.produced} delete={this.deleteProducedRow} />
-      </Layout>
+      </>
     )
   }
 }

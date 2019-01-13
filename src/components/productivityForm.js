@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
 import Select from 'react-select'
+import styled from 'styled-components'
 
 import PropTypes from 'prop-types'
 
 import Input from './input'
+
+const MoreButton = styled.button`
+  border: none;
+  cursor: pointer;
+  &:active,
+  &:focus {
+    outline: none;
+  }
+`
 
 const products = [
   { value: 15.2001, label: 'EKTORP EU' },
@@ -98,13 +108,13 @@ class ProductivityForm extends Component {
           handler={this.handleInput}
         />
 
-        <button
+        <MoreButton
           type="button"
           onClick={() => this.setState({ isMore: !isMore })}
-          className="btn text-info"
+          className="text-info"
         >
           {isMore ? 'скрыть...' : 'ещё...'}
-        </button>
+        </MoreButton>
         <hr />
         {isMore && (
           <>
