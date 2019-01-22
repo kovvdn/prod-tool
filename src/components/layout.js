@@ -1,36 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
+
+import styled from 'styled-components'
 
 import Header from './header'
+import Modal from './modal'
+import Settings from './settings'
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
+import Toggle from './Toggle'
+
+const ContentContainer = styled.div`
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0px 1.0875rem 1.45rem;
+`
+
+const Layout = ({ children, clearOutput, set12HoursDay }) => (
+  <Toggle>
+    {({ on, toggle }) => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          {children}
-        </div>
+        <Header clearOutput={clearOutput} toggle={toggle} />
+        <Modal on={on} toggle={toggle}>
+          <Settings set12HoursDay={set12HoursDay} />
+        </Modal>
+        <ContentContainer>{children}</ContentContainer>
       </>
     )}
-  />
+  </Toggle>
 )
 
 Layout.propTypes = {

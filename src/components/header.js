@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
+import SettingsButton from './styled/settingsButton'
+
 const HeaderWrapper = styled.div`
   margin-bottom: 1.5rem;
   .header_content {
@@ -15,13 +17,15 @@ const HeaderWrapper = styled.div`
     font-size: 2rem;
     margin: 0;
     color: #fff;
+    cursor: pointer;
   }
 `
 
-const Header = ({ siteTitle }) => (
+const Header = ({ toggle, clearOutput }) => (
   <HeaderWrapper className="bg-dark">
-    <div className="header_content">
-      <h1>{siteTitle}</h1>
+    <div className="header_content row justify-content-between">
+      <h1 onClick={clearOutput}>Линия №3</h1>
+      <SettingsButton onClick={toggle} />
     </div>
   </HeaderWrapper>
 )
